@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            margin: 50px;
+        }
+        div{
+            
+            border:5px solid darkblue;
+            padding: 10px;
+        }
+
+        button{
+            border: 2px solid red ;
+            color: red;
+        }
+
+        button:active{
+            border: green;
+            color: green;
+        }
+    </style>
+    <script>
+        let btn;
+        let checkBox;
+        document.addEventListener("DOMContentLoaded",function(){
+            checkBox = document.getElementById("box");
+            btn = document.getElementsByTagName("button")[0];
+
+            //console.log(btn);
+            //btn.setAttribute("disabled","disabled");
+            btn.disabled=true;
+            btn.innerText = "Disabled";
+            checkBox.addEventListener("change",tickChecker)
+        })
+
+
+        function tickChecker(event){
+            //console.log(checkBox.checked);
+            btn.innerText = "Clickable";
+           if(checkBox.checked){
+
+               btn.disabled=false;
+                btn.addEventListener("click",function(event){
+                   //alert("Clicked");
+                   btn.innerText = "Clicking..";
+    
+               }) 
+           }else{
+            btn.disabled=true;
+            btn.innerText = "Disabled";
+            
+        
+           }
+
+
+        }
+    </script>  
+</head>
+<body>
+    <div>
+        <input type="checkbox" id = "box" autofocus>
+        <button>Click Me</button>
+        
+    </div>
+</body>
+</html>
